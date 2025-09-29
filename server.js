@@ -31,39 +31,21 @@ app.use(helmet({
 }));
 
 app.use(compression());
-
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin) return callback(null, true);
-    const allowedOrigins = [
-      "*"
-    ];
-    
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    }
-    
-    return callback(null, true); 
-  },
-  credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization', 'X-Requested-With'],
+  origin: '*',                 // allow all origins
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
+  credentials: true,           // allow cookies/auth headers if needed
   preflightContinue: false,
   optionsSuccessStatus: 204
 }));
+
+// Handle preflight requests
 app.options('*', cors());
-if (process.env.NODE_ENV === 'production') {
-  app.use(morgan('combined')); // Standard Apache log format
-} else {
-  app.use(morgan('dev')); // Colorful dev format
-}
-// Trust proxy settings
-app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 
-// THEN your existing middleware:
-app.use(express.json({ limit: '10mb' })); // Add size limit
+// Your existing middleware
+app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
-
 if (process.env.NODE_ENV === 'production') {
   // Force HTTPS
   app.use((req, res, next) => {
