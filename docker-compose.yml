@@ -37,6 +37,7 @@ services:
       - ./logs:/app/logs
     security_opt:
       - no-new-privileges:true
+
   yolo-api:
     build:
       context: ./yolo-api
@@ -47,9 +48,7 @@ services:
     networks:
       - djahit-network
     volumes:
-     volumes:
-      - ~/models:/app/runs/detect/train_pretty_save5/weights
-
+      - /home/djahit/models:/app/runs/detect/train_pretty_save5/weights
     environment:
       - PYTHONUNBUFFERED=1
       - YOLO_CONFIG_DIR=/app/config
