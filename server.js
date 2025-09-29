@@ -1171,6 +1171,22 @@ app.use((req, res) => {
   });
 });
 
+
+//backendaiapi
+// Example in Node.js backend
+const fetch = require("node-fetch");
+async function getPredictions(imageBuffer) {
+    const formData = new FormData();
+    formData.append("file", imageBuffer, "image.jpg");
+
+    const res = await fetch("http://yolo-api:8009/predict", {
+        method: "POST",
+        body: formData
+    });
+    return await res.json();
+}
+
+
 // Global error handler
 app.use(errorHandler);
 
