@@ -39,21 +39,21 @@ services:
       - no-new-privileges:true
 
   yolo-api:
-    build:
-      context: ./yolo-api  # path to your YOLO API Dockerfile
-    container_name: yolo-api
-    restart: unless-stopped
-    ports:
-      - "8009:8000"  # host port 8009 → container port 8000
-    networks:
-      - djahit-network
-    volumes:
-      - ./yolo-api/runs:/app/runs
-    depends_on:
-      - api
-    environment:
-      - PYTHONUNBUFFERED=1
-    command: uvicorn main:app --host 0.0.0.0 --port 8000
+  build:
+    context: ./yolo-api
+  container_name: yolo-api
+  restart: unless-stopped
+  ports:
+    - "8009:8000"
+  networks:
+    - djahit-network
+  volumes:
+    - ./yolo-api/runs:/app/runs
+  environment:
+    - PYTHONUNBUFFERED=1
+    - YOLO_CONFIG_DIR=/app/config
+  command: uvicorn main:app --host 0.0.0.0 --port 8000
+
 
   nginx:
     image: nginx:alpine
