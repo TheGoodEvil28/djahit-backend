@@ -1,10 +1,21 @@
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi import FastAPI, File, UploadFile
 from ultralytics import YOLO
 import cv2
 import numpy as np
-import base64
 
 app = FastAPI()
+
+# Enable CORS for all origins
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # allow all
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Your model
 model = YOLO("runs/detect/train_pretty_save5/weights/best.pt")
 class_names = ["outside_tear","mark","normal","stain","tear","hole"]
 
