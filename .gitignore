@@ -4,3 +4,8 @@ node_modules/
 logs/
 .DS_Store
 database_backup.sql
+.venv/
+__pycache__/
+*.pyc
+*.pkl
+*.log
