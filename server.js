@@ -12,8 +12,6 @@ const xss = require('xss');
 const morgan = require('morgan');
 
 
-
-// Middleware
 app.use(helmet({
   contentSecurityPolicy: {
     directives: {
@@ -39,6 +37,13 @@ app.use(cors({
   preflightContinue: false,
   optionsSuccessStatus: 204
 }));
+if (process.env.NODE_ENV === 'production') {
+  app.use(morgan('combined')); // Standard Apache log format
+} else {
+  app.use(morgan('dev')); // Colorful dev format
+}
+// Trust proxy settings
+app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 
 // Handle preflight requests
 // app.options('*', cors());
