@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djahit - Reward Points</title>
+    <link rel="icon" type="image/x-icon" href="../ASSETS/img/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#E9E4D4',
+                        'section-white': '#F4F2E9',
+                        'djahit-orange': '#E07A5F',
+                        'text-dark': '#A85C47',
+                        'button-green': '#7A8568',
+                        'sage-green': '#8B9D6F',
+                        'text-white': '#F6F7F3',
+                        'text-radio': '#393E30',
+                        'reminder': '#F5D6CD',
+                        'font-sec': '#414141',
+                        'table':'#E2E7DB'
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans min-h-screen">
+    <div id="navbar-container"></div>
+    <div id="loading-spinner" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6">
+            <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-djahit-orange mx-auto"></div>
+            <p class="text-center mt-4 text-gray-600">Loading profile...</p>
+        </div>
+    </div>
+    <div id="error-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg p-6 max-w-md mx-4">
+            <h3 class="text-lg font-semibold text-red-600 mb-2">Error</h3>
+            <p id="error-message" class="text-gray-600 mb-4"></p>
+            <button onclick="closeErrorModal()" class="bg-djahit-orange text-white px-4 py-2 rounded-lg hover:bg-opacity-90">
+                Close
+            </button>
+        </div>
+    </div>
+    <main class="max-w-7xl mx-auto px-4 md:px-6 pb-8 pt-12 md:pt-16">
+        <div class="min-h-[250px] bg-section-white rounded-2xl py-6 md:py-8 px-4 md:px-8 lg:px-16 mb-8">
+            <h2 class="text-base font-medium text-button-green mb-4 md:mb-6 border-b border-[#A3B18A] pb-2">Informasi Akun</h2>            
+            <div class="hidden lg:flex items-start justify-between">
+                <div class="flex items-start space-x-24 pl-20">
+                    <div class="relative">
+                        <div class="w-[90px] h-[100px] rounded-2xl bg-transparent border border-button-green from-button-green to-sage-green flex items-center justify-center overflow-hidden">
+                            <img src="../assets/img/syaqina.svg" alt="profile picture ilustrasi">
+                        </div>
+                        <button class="absolute flex items-center justify-center -bottom-10 left-1/2 transform -translate-x-1/2 bg-[#CA6E56] bg-opacity-80 text-white text-xs py-1 rounded-3xl w-[140px] h-[30px] hover:bg-opacity-100 transition-colors">
+                            <img src="../assets/img/buttonUbah.svg" alt="">
+                            Ubah Foto Profil
+                        </button>
+                    </div>                    
+                    <div class="grid grid-cols-2 gap-x-24 gap-y-[17px]">
+                        <div>
+                            <p class="text-xs text-text-dark mb-1">Nama Depan</p>
+                            <p id="firstname-display" class="font-medium text-base text-text-radio">Loading...</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-text-dark mb-1">Nama Belakang</p>
+                            <p id="lastname-display" class="font-medium text-base text-text-radio">Loading...</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-text-dark mb-1">Email Address</p>
+                            <p id="email-display" class="font-medium text-base text-text-radio">Loading...</p>
+                        </div>
+                        <div>
+                            <p class="text-xs text-text-dark mb-1">Phone Number</p>
+                            <p id="phone-display" class="font-medium text-base text-text-radio">Loading...</p>
+                        </div>
+                    </div>
+                </div>                
+                <div class="text-center pr-16">
+                    <p class="text-sm text-gray-500 mb-2">Poin Reward</p>
+                    <div class="text-xl font-bold text-djahit-orange mb-4">240*</div>
+                    <button class="bg-djahit-orange text-base text-white w-[176px] h-[36px] px-6 rounded-lg hover:bg-opacity-90 transition-colors font-medium">
+                        Redeem Reward
+                    </button>
+                </div>
+            </div>
+            <div class="lg:hidden">
+                <div class="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-6 mb-6">
+                    <div class="relative flex-shrink-0">
+                        <div class="w-20 h-24 sm:w-[80px] sm:h-[90px] rounded-2xl bg-transparent border border-button-green flex items-center justify-center overflow-hidden">
+                            <img src="../assets/img/syaqina.svg" alt="profile picture ilustrasi" class="w-full h-full object-cover">
+                        </div>
+                        <button class="absolute flex items-center justify-center -bottom-11 sm:-bottom-12 left-1/2 transform -translate-x-1/2 bg-[#CA6E56] bg-opacity-80 text-white text-xs py-1 rounded-3xl w-28 w-[30px] md:w-[130px] h-[28px] sm:h-[30px] mobile-button">
+                            <img src="../assets/img/buttonUbah.svg" alt="" class="mr-1">
+                            <span class="hidden sm:inline">Ubah Foto Profil</span>
+                        </button>
+                    </div>
+                    <div class="flex-1 w-full mt-8 sm:mt-0">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-x-8 sm:gap-y-4">
+                            <div>
+                                <p class="text-xs text-text-dark mb-1">Nama Depan</p>
+                                <p id="firstname-display-mobile" class="font-medium text-sm sm:text-base text-text-radio">Loading...</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-dark mb-1">Nama Belakang</p>
+                                <p id="lastname-display-mobile" class="font-medium text-sm sm:text-base text-text-radio">Loading...</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-dark mb-1">Email Address</p>
+                                <p id="email-display-mobile" class="font-medium text-sm sm:text-base text-text-radio break-all">Loading...</p>
+                            </div>
+                            <div>
+                                <p class="text-xs text-text-dark mb-1">Phone Number</p>
+                                <p id="phone-display-mobile" class="font-medium text-sm sm:text-base text-text-radio">Loading...</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center border-t border-[#A3B18A] pt-4">
+                    <p class="text-sm text-gray-500 mb-2">Poin Reward</p>
+                    <div class="text-xl font-bold text-djahit-orange mb-4">240*</div>
+                    <button class="bg-djahit-orange text-sm sm:text-base text-white w-full sm:w-[176px] h-[36px] px-6 rounded-lg hover:bg-opacity-90 transition-colors font-medium">
+                        Redeem Reward
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+            <div class="bg-section-white rounded-2xl pt-6 md:pt-7 pl-4 md:pl-6 pr-6 md:pr-14 pb-6">
+                <h3 class="text-base font-medium text-[#A3B18A] mb-4 border-b border-[#A3B18A] pb-2">Riwayat Order</h3>
+                <div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-2 md:pr-3 bg-table rounded-t-2xl">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">1.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Denim Coklat</span>
+                        </div>
+                        <button class="text-djahit-orange text-sm md:text-base font-medium hover:underline flex items-center flex-shrink-0 ml-2">
+                            <span class="hidden sm:inline">Detail</span>
+                            <span class="sm:hidden">Detail</span>
+                            <img src="../assets/img/right.svg" class="pl-1 md:pl-2 w-4 md:w-auto" alt="arrow to the right">
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-2 md:pr-3 bg-transparent">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">2.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Sarung Santri</span>
+                        </div>
+                        <button class="text-djahit-orange text-sm md:text-base font-medium hover:underline flex items-center flex-shrink-0 ml-2">
+                            <span class="hidden sm:inline">Detail</span>
+                            <span class="sm:hidden">Detail</span>
+                            <img src="../assets/img/right.svg" class="pl-1 md:pl-2 w-4 md:w-auto" alt="arrow to the right">
+                        </button>
+                    </div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-2 md:pr-3 bg-table rounded-b-2xl">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">2.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Denim Coklat</span>
+                        </div>
+                        <button class="text-djahit-orange text-sm md:text-base font-medium hover:underline flex items-center flex-shrink-0 ml-2">
+                            <span class="hidden sm:inline">Detail</span>
+                            <span class="sm:hidden">Detail</span>
+                            <img src="../assets/img/right.svg" class="pl-1 md:pl-2 w-4 md:w-auto" alt="arrow to the right">
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-section-white rounded-2xl pt-6 md:pt-7 pl-4 md:pl-6 pr-6 md:pr-14 pb-6">
+                <h3 class="text-base font-medium text-[#A3B18A] mb-4 border-b border-[#A3B18A] pb-2">Riwayat Kegiatan</h3>
+                <div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-4 md:pr-6 bg-table rounded-t-2xl">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">1.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Donasi Baju</span>
+                        </div>
+                        <span class="text-djahit-orange text-sm md:text-base font-semibold flex-shrink-0 ml-2">20 Pts</span>
+                    </div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-4 md:pr-6 bg-transparent">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">2.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Perbaiki Baju</span>
+                        </div>
+                        <span class="text-djahit-orange text-sm md:text-base font-semibold flex-shrink-0 ml-2">10 Pts</span>
+                    </div>
+                    <div class="flex items-center justify-between min-h-[40px] py-3 md:py-4 pl-3 md:pl-4 pr-4 md:pr-6 bg-table rounded-b-2xl">
+                        <div class="flex-1 min-w-0">
+                            <span class="text-gray-600 text-sm md:text-base mr-2">3.</span>
+                            <span class="font-medium text-sm md:text-base text-gray-900">Ajak Mitra</span>
+                        </div>
+                        <span class="text-djahit-orange text-sm md:text-base font-semibold flex-shrink-0 ml-2">50 Pts</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <div id="footer-container"></div>    
+    <style>
+        html, body {
+            width: 100%;
+            height: auto;
+            overflow-x: hidden;
+            -webkit-overflow-scrolling: touch;
+        }        
+        * {
+            box-sizing: border-box;
+        }        
+        .mobile-button {
+            transition: background-color 0.2s ease;
+        }
+        .mobile-button:hover {
+            background-color: #CA6E56 !important;
+            transform: translateX(0) translateY(0) translateX(-50%) !important;
+        }        
+        @media (max-width: 640px) {
+            .max-w-7xl {
+                max-width: 100vw;
+                padding-left: 1rem;
+                padding-right: 1rem;
+                margin-left: 0;
+                margin-right: 0;
+            }
+            .bg-section-white {
+                width: 100%;
+                max-width: calc(100vw - 2rem);
+            }
+            .mobile-button {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                white-space: nowrap;
+            }
+            button {
+                max-width: 100%;
+                word-wrap: break-word;
+                touch-action: manipulation;
+                -webkit-tap-highlight-color: transparent;
+            }
+            .grid {
+                width: 100%;
+            }
+            .break-all {
+                word-break: break-all;
+                overflow-wrap: break-word;
+            }
+            .mobile-button:active {
+                transform: translateX(-50%) scale(0.98);
+            }
+        }
+        @media (min-width: 640px) and (max-width: 1023px) {
+            .sm\:space-x-6 > :not([hidden]) ~ :not([hidden]) {
+                margin-left: 1.5rem;
+            }
+            .max-w-7xl {
+                padding-left: 1.5rem;
+                padding-right: 1.5rem;
+            }
+        }
+        @media (min-width: 1024px) {
+            .lg\:flex {
+                display: flex !important;
+            }
+            .lg\:hidden {
+                display: none !important;
+            }
+        }        
+        @media (hover: none) {
+            button:hover {
+                transform: none !important;
+            }
+            .mobile-button:hover {
+                transform: translateX(-50%) !important;
+            }
+        }
+        .transition-colors {
+            transition-property: background-color, border-color;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+        }
+        button:focus {
+            outline: 2px solid #E07A5F;
+            outline-offset: 2px;
+        }
+        .min-h-\[40px\] {
+            min-height: 40px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+        body {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        @media (max-width: 768px) {
+            button, a {
+                min-height: 44px;
+                min-width: 44px;
+            }
+        }
+        main {
+            width: 100%;
+            max-width: 100vw;
+        }
+    </style>
+    <script>
+        let userData = null;
+
+        // API Functions
+        async function fetchUserProfile() {
+            try {
+                const response = await fetch('/user/profile', {
+                    method: 'GET',
+                    credentials: 'include', // Include session cookie
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+
+                if (!response.ok) {
+                    if (response.status === 401) {
+                        // User not authenticated, redirect to login
+                        window.location.href = '/user/login';
+                        return null;
+                    }
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+                if (data.success) {
+                    return data.user;
+                } else {
+                    throw new Error(data.error || 'Failed to fetch user profile');
+                }
+            } catch (error) {
+                console.error('Error fetching user profile:', error);
+                showError('Failed to load profile data: ' + error.message);
+                return null;
+            }
+        }
+
+        // UI Functions
+        function updateProfileDisplay(user) {
+            if (!user) return;
+
+            // Update desktop view
+            document.getElementById('firstname-display').textContent = user.firstname || 'N/A';
+            document.getElementById('lastname-display').textContent = user.lastname || 'N/A';
+            document.getElementById('email-display').textContent = user.email || 'N/A';
+            document.getElementById('phone-display').textContent = user.phone || 'N/A';
+
+            // Update mobile view
+            document.getElementById('firstname-display-mobile').textContent = user.firstname || 'N/A';
+            document.getElementById('lastname-display-mobile').textContent = user.lastname || 'N/A';
+            document.getElementById('email-display-mobile').textContent = user.email || 'N/A';
+            document.getElementById('phone-display-mobile').textContent = user.phone || 'N/A';
+
+            // Update title
+            document.title = `Djahit - ${user.firstname} ${user.lastname}`;
+        }
+
+        function showLoading() {
+            document.getElementById('loading-spinner').classList.remove('hidden');
+        }
+
+        function hideLoading() {
+            document.getElementById('loading-spinner').classList.add('hidden');
+        }
+
+        function showError(message) {
+            document.getElementById('error-message').textContent = message;
+            document.getElementById('error-modal').classList.remove('hidden');
+        }
+
+        function closeErrorModal() {
+            document.getElementById('error-modal').classList.add('hidden');
+        }
+
+        // Initialize page
+        async function initializePage() {
+            showLoading();
+
+            try {
+                // Check authentication first
+                const authResponse = await fetch('/user/check-auth', {
+                    credentials: 'include'
+                });
+
+                if (!authResponse.ok || !(await authResponse.json()).authenticated) {
+                    window.location.href = '/user/login';
+                    return;
+                }
+
+                // Fetch user profile
+                userData = await fetchUserProfile();
+                
+                if (userData) {
+                    updateProfileDisplay(userData);
+                }
+            } catch (error) {
+                console.error('Error initializing page:', error);
+                showError('Failed to initialize page: ' + error.message);
+            } finally {
+                hideLoading();
+            }
+        }
+        document.addEventListener('DOMContentLoaded', function() {
+            $('#navbar-container').load('navbar.html');
+            $('#footer-container').load('footer.html');
+            initializePage();
+
+            document.documentElement.style.scrollBehavior = 'smooth';
+            const images = document.querySelectorAll('img');
+            images.forEach(img => {
+                img.addEventListener('load', function() {
+                    this.style.opacity = '1';
+                });
+                img.addEventListener('error', function() {
+                    this.style.display = 'none';
+                    console.warn('Failed to load image:', this.src);
+                });
+            });            
+            if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
+                const buttons = document.querySelectorAll('button');
+                buttons.forEach(button => {
+                    button.addEventListener('touchstart', function(e) {
+                        e.preventDefault();
+                        if (this.classList.contains('mobile-button')) {
+                            this.style.backgroundColor = '#CA6E56';
+                        }
+                    });
+                    button.addEventListener('touchend', function(e) {
+                        setTimeout(() => {
+                            if (this.classList.contains('mobile-button')) {
+                                this.style.backgroundColor = '';
+                            }
+                        }, 150);
+                    });
+                });
+            }
+            function preventHorizontalScroll() {
+                const body = document.body;
+                const html = document.documentElement;
+                if (body.scrollWidth > window.innerWidth) {
+                    body.style.overflowX = 'hidden';
+                    html.style.overflowX = 'hidden';
+                }
+            }
+            preventHorizontalScroll();
+            window.addEventListener('resize', preventHorizontalScroll);
+            let resizeTimeout;
+            window.addEventListener('resize', function() {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(function() {
+                    preventHorizontalScroll();
+                }, 250);
+            });
+        });
+    </script>
+</body>
+</html>

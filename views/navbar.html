@@ -1,0 +1,284 @@
+<style>
+    .djahit-logo {
+            width: 140px !important;
+            height: 60px !important;
+            min-width: 140px !important;
+            min-height: 60px !important;
+            max-width: 140px !important;
+            max-height: 60px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+</style>
+<nav class="w-full px-4 md:px-6 lg:px-10 mx-auto" style="height: 90px; background-color: #E9E4D4;">
+    <div class="w-full px-4 md:px-8 lg:px-18 rounded-[12px] md:rounded-[16px] mt-[15px] md:mt-[20px] lg:mt-[30px] mx-auto relative h-full" style="background-color: #F8F7F2;">
+        <a class="absolute left-4 md:left-8 lg:left-12 top-1/2 transform -translate-y-1/2 w-[140px] h-[60px]" href="/user/dashboard">
+            <img src="../assets/img/DjahitLogo.svg" class="djahit-logo" alt="Djahit Logo">
+        </a>  
+        <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2">
+            <ul class="flex space-x-8 xl:space-x-12">
+                <li><a href="/user/dashboard" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Home</a></li>
+                <li><a href="../views/forminput.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Input Order</a></li>
+                <li><a href="../views/riwayatorder.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Riwayat Order</a></li>
+                <li><a href="../views/rewardspoinpage.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Reward Point</a></li>
+            </ul>
+        </div>
+        <div class="hidden md:flex absolute right-4 md:right-8 lg:right-12 top-1/2 transform -translate-y-1/2 space-x-3 lg:space-x-4">
+            <button class="p-2 hover:bg-orange-100 rounded-lg transition-colors">
+                <img src="../assets/img/search.svg" alt="search" class="w-8 h-8 md:w-full md:h-full">
+            </button>
+            <button class="p-2 hover:bg-orange-100 rounded-lg transition-colors" data-navbar-avatar-btn>
+                <img src="../assets/img/avatar.svg" alt="avatar" class="w-8 h-8 md:w-full md:h-full">
+            </button>
+        </div>        
+        <div class="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2">
+            <button data-navbar-mobile-btn class="p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" style="color: #393E30;">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
+        </div>
+    </div>    
+    <div data-navbar-mobile-menu class="md:hidden absolute top-[5px] left-4 right-4 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50 hidden">
+        <div class="py-4">
+            <ul class="space-y-3 px-4 mb-4">
+                <li><a href="/user/dashboard" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2 text-[#393E30]">Home</a></li>
+                <li><a href="../views/forminput.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2 text-[#393E30]">Input Order</a></li>
+                <li><a href="../views/riwayatorder.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2 text-[#393E30]">Riwayat Order</a></li>
+                <li><a href="../views/rewardspoinpage.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2 text-[#393E30]">Reward Point</a></li>
+            </ul>            
+            <div class="border-t border-gray-200 pt-4 px-4 space-y-3">
+                <button class="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-50 rounded-lg hover:bg-[#393E30] hover:text-white text-[#393E30] transition-colors">
+                    <img src="../assets/img/search.svg" alt="search" class="w-8 h-8">
+                    <span class="text-base font-medium">Search</span>
+                </button>
+                <button class="w-full flex items-center justify-center space-x-2 px-4 py-3 bg-gray-50 rounded-lg hover:bg-[#393E30] hover:text-white text-[#393E30] transition-colors" data-navbar-mobile-avatar-btn>
+                    <img src="../assets/img/avatarModal.svg" alt="avatar" class="w-8 h-8">
+                    <span class="text-base font-medium">Profile</span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <div data-navbar-avatar-dropdown class="hidden absolute top-20 right-4 md:right-8 lg:right-12 bg-white rounded-lg shadow-lg border border-gray-200 z-50 min-w-[200px]">
+        <div class="py-2">
+            <div class="px-4 py-3 border-b border-gray-200">
+                <p class="text-sm font-medium text-gray-900">Olivia Putri</p>
+                <p class="text-xs text-gray-500">oliviaputri@djahit.com</p>
+            </div>
+            <ul class="py-1">
+                <li><a href="../views/profile.html" class="block px-4 py-2 text-sm text-gray-700 hover:text-white hover:bg-[#393E30]">My Profile</a></li>
+                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-white hover:bg-[#393E30]">Settings</a></li>
+                <li><a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:text-white hover:bg-[#393E30]">Help & Support</a></li>
+                <li class="border-t border-gray-200">
+                    <a href="/user/logout" class="block px-4 py-2 text-sm text-red-600 hover:text-white hover:bg-[#393E30]">Sign Out</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-navbar-mobile-avatar-modal class="md:hidden fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
+        <div class="absolute bottom-0 left-0 right-0 bg-white rounded-t-xl p-6">
+            <div class="flex items-center justify-between mb-6">
+                <h2 class="text-lg font-semibold" style="color: #393E30;">Profile Menu</h2>
+                <button data-navbar-close-mobile-modal class="p-2 hover:bg-gray-100 rounded-lg">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+            <div class="mb-6 pb-4 border-b border-gray-200">
+                <div class="flex items-center space-x-3">
+                    <img src="../assets/img/avatarModal.svg" alt="avatar" class="w-12 h-12">
+                    <div>
+                        <p class="text-base font-medium text-[#393E30]">Olivia Putri</p>
+                        <p class="text-sm text-[#393E30]">oliviaputri@djahit.com</p>
+                    </div>
+                </div>
+            </div>
+            <ul class="space-y-2 mb-6">
+                <li><a href="../views/profile.html" class="block px-4 py-3 text-base font-medium hover:bg-[#393E30] hover:text-white text-[#393E30] rounded-lg">My Profile</a></li>
+                <li><a href="#" class="block px-4 py-3 text-base font-medium hover:bg-[#393E30] hover:text-white text-[#393E30] rounded-lg">Settings</a></li>
+                <li><a href="#" class="block px-4 py-3 text-base font-medium hover:bg-[#393E30] hover:text-white text-[#393E30] rounded-lg">Help & Support</a></li>
+            </ul>
+            <button class="w-full px-4 py-3 text-base font-medium text-red-600 hover:bg-red-50 rounded-lg border border-red-200 transition-colors" onclick="window.location.href = '../views/login.html';">
+                Sign Out
+            </button>
+        </div>
+    </div>
+</nav>
+<script>
+(function() {
+    'use strict';
+    function initializeDjahitNavbar() {
+        console.log('Initializing Djahit Navbar...');
+        const mobileMenuBtn = document.querySelector('[data-navbar-mobile-btn]');
+        const mobileMenu = document.querySelector('[data-navbar-mobile-menu]');
+        const avatarBtn = document.querySelector('[data-navbar-avatar-btn]');
+        const avatarDropdown = document.querySelector('[data-navbar-avatar-dropdown]');
+        const mobileAvatarBtn = document.querySelector('[data-navbar-mobile-avatar-btn]');
+        const mobileAvatarModal = document.querySelector('[data-navbar-mobile-avatar-modal]');
+        const closeMobileModal = document.querySelector('[data-navbar-close-mobile-modal]');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                mobileMenu.classList.toggle('hidden');
+                if (avatarDropdown) {
+                    avatarDropdown.classList.add('hidden');
+                }
+                console.log('Mobile menu toggled');
+            });
+        }
+        if (avatarBtn && avatarDropdown) {
+            avatarBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                avatarDropdown.classList.toggle('hidden');
+                if (mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
+                console.log('Avatar dropdown toggled');
+            });
+        }
+        if (mobileAvatarBtn && mobileAvatarModal) {
+            mobileAvatarBtn.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                mobileAvatarModal.classList.remove('hidden');
+                if (mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                }
+                console.log('Mobile avatar modal opened');
+            });
+        }
+        if (closeMobileModal && mobileAvatarModal) {
+            closeMobileModal.addEventListener('click', function() {
+                mobileAvatarModal.classList.add('hidden');
+            });
+            mobileAvatarModal.addEventListener('click', function(e) {
+                if (e.target === mobileAvatarModal) {
+                    mobileAvatarModal.classList.add('hidden');
+                }
+            });
+        }
+        document.addEventListener('click', function(event) {
+            if (avatarBtn && avatarDropdown && 
+                !avatarBtn.contains(event.target) && 
+                !avatarDropdown.contains(event.target)) {
+                avatarDropdown.classList.add('hidden');
+            }
+            if (mobileMenuBtn && mobileMenu && 
+                !mobileMenuBtn.contains(event.target) && 
+                !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        console.log('Djahit Navbar initialized successfully');
+    }
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeDjahitNavbar);
+    } else {
+        setTimeout(initializeDjahitNavbar, 10);
+    }
+    setTimeout(initializeDjahitNavbar, 100);
+    setTimeout(initializeDjahitNavbar, 500);
+    const observer = new MutationObserver(function(mutations) {
+        mutations.forEach(function(mutation) {
+            if (mutation.type === 'childList' && mutation.addedNodes.length > 0) {
+                const hasNavbar = document.querySelector('[data-navbar-avatar-btn]');
+                if (hasNavbar) {
+                    setTimeout(initializeDjahitNavbar, 10);
+                    observer.disconnect(); 
+                }
+            }
+        });
+    });
+    const navbarContainer = document.getElementById('navbar-container');
+    if (navbarContainer) {
+        observer.observe(navbarContainer, { childList: true, subtree: true });
+    }
+})();
+</script>
+<style>
+@media (min-width: 768px) and (max-width: 1023px) {
+    .lg\:px-16 {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+[data-navbar-mobile-menu] {
+    transition: all 0.3s ease-in-out;
+}
+[data-navbar-mobile-avatar-modal] {
+    transition: all 0.3s ease-in-out;
+}
+[data-navbar-avatar-dropdown] {
+    transition: all 0.2s ease-in-out;
+}
+.hover\:text-djahit-orange:hover {
+    color: #E07A5F !important;
+}
+[data-navbar-mobile-btn], 
+[data-navbar-avatar-btn], 
+[data-navbar-mobile-avatar-btn] {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+[data-navbar-mobile-btn]:active, 
+[data-navbar-avatar-btn]:active, 
+[data-navbar-mobile-avatar-btn]:active {
+    transform: scale(0.95);
+}
+[data-navbar-mobile-avatar-modal] > div {
+    animation: slideUp 0.3s ease-out;
+}
+@keyframes slideUp {
+    from {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+@media (max-width: 768px) {
+    nav img[alt="Djahit Logo"] {
+        height: 1.5rem;
+    }
+}
+@media (min-width: 768px) and (max-width: 1023px) {
+    nav img[alt="Djahit Logo"] {
+        height: 2rem;
+    }
+}
+.djahit-logo {
+            width: 140px !important;
+            height: 60px !important;
+            min-width: 140px !important;
+            min-height: 60px !important;
+            max-width: 140px !important;
+            max-height: 60px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+button:hover img {
+    filter: brightness(0.8);
+    transition: filter 0.2s ease-in-out;
+}
+[data-navbar-mobile-menu] {
+    z-index: 50;
+}
+[data-navbar-avatar-dropdown] {
+    z-index: 50;
+}
+[data-navbar-mobile-avatar-modal] {
+    z-index: 60;
+}
+nav * {
+    box-sizing: border-box;
+}
+nav input, nav textarea, nav button {
+    font-family: inherit;
+}
+</style>

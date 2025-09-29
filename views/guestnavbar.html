@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fixed Navbar</title>
+</head>
+<body>
+    <nav class="w-full px-4 md:px-6 lg:px-10 mx-auto" style="height: 90px; background-color: #E9E4D4;">
+        <div class="w-full px-4 md:px-8 lg:px-18 rounded-[12px] md:rounded-[16px] mt-[15px] md:mt-[20px] lg:mt-[30px] mx-auto relative h-full" style="background-color: #F8F7F2;">
+            <a class="absolute left-4 md:left-8 lg:left-12 top-1/2 transform -translate-y-1/2" href="../../index.html">
+                    <img src="../assets/img/DjahitLogo.svg" alt="Djahit Logo">
+            </a>            
+            <div class="hidden lg:block absolute left-1/2 transform -translate-x-1/2 top-1/2 -translate-y-1/2">
+                <ul class="flex space-x-8 xl:space-x-12">
+                    <li><a href="../views/index.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Home</a></li>
+                    <li><a href="../views/forminput.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Input Order</a></li>
+                    <li><a href="../views/riwayatorder.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Riwayat Order</a></li>
+                    <li><a href="../views/rewardspoinpage.html" class="text-sm xl:text-base font-medium hover:text-djahit-orange transition-colors text-[#393E30]">Reward Point</a></li>
+                </ul>
+            </div>            
+            <div class="hidden md:flex absolute right-4 md:right-8 lg:right-12 top-1/2 transform -translate-y-1/2 space-x-2 lg:space-x-4">
+                <button id="registerBtn" class="px-3 md:px-4 lg:px-6 py-2 lg:py-3 border-2 rounded-lg text-xs md:text-sm lg:text-base font-medium transition-all duration-300" 
+                        style="border-color: #7A8568; color: #7A8568; width: 90px; height: 36px; background-color: transparent;"
+                        onclick="window.location='/user/register';">
+                    Register
+                </button>
+                <button id="loginBtn" class="px-3 md:px-4 lg:px-6 py-2 lg:py-3 rounded-lg text-xs md:text-sm lg:text-base font-medium transition-all duration-300" 
+                        style="background-color: #7A8568; color: white; width: 90px; height: 36px; border: 2px solid #7A8568;"
+                        onclick="window.location='/user/login';">
+                    Login
+                </button>
+            </div>            
+            <div class="md:hidden absolute right-4 top-1/2 transform -translate-y-1/2">
+                <button id="mobileMenuBtn" class="p-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-300" style="color: #393E30;">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>        
+        <div id="mobileMenu" class="md:hidden absolute top-[5px] left-4 right-4 mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50 hidden">
+            <div class="py-4">
+                <ul class="space-y-3 px-4 mb-4">
+                    <li><a href="../../index.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2" style="color: #393E30;">Home</a></li>
+                    <li><a href="../views/forminput.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2" style="color: #393E30;">Input Order</a></li>
+                    <li><a href="../views/riwayatorder.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2" style="color: #393E30;">Riwayat Order</a></li>
+                    <li><a href="../views/rewardspoinpage.html" class="block text-base font-medium hover:text-djahit-orange transition-colors py-2" style="color: #393E30;">Reward Point</a></li>
+                </ul>
+                <div class="border-t border-gray-200 pt-4 px-4 space-y-2">
+                    <button class="w-full px-4 py-2 border-2 rounded-lg text-base font-medium transition-all duration-300" 
+                            style="border-color: #7A8568; color: #7A8568; background-color: transparent;"
+                            onclick="window.location='/user/register';">
+                        Register
+                    </button>
+                    <button class="w-full px-4 py-2 rounded-lg text-base font-medium transition-all duration-300" 
+                            style="background-color: #7A8568; color: white; border: 2px solid #7A8568;"
+                            onclick="window.location='/user/login';">
+                        Login
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<script>
+function initializeNavbar() {
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    if (mobileMenuBtn && mobileMenu) {
+        mobileMenuBtn.replaceWith(mobileMenuBtn.cloneNode(true));
+        const newMobileMenuBtn = document.getElementById('mobileMenuBtn');
+        newMobileMenuBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            mobileMenu.classList.toggle('hidden');
+        });
+                document.addEventListener('click', function(event) {
+            if (!newMobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+        console.log('Mobile menu initialized successfully!');
+    } else {
+        console.error('Mobile menu elements not found!');
+    }    
+    initializeButtonEffects();
+}
+function initializeButtonEffects() {
+    const registerBtn = document.getElementById('registerBtn');
+    const loginBtn = document.getElementById('loginBtn');
+    if (registerBtn && loginBtn) {
+        registerBtn.addEventListener('mouseenter', () => {
+            registerBtn.style.backgroundColor = '#7A8568';
+            registerBtn.style.color = 'white';
+        });
+        registerBtn.addEventListener('mouseleave', () => {
+            registerBtn.style.backgroundColor = 'transparent';
+            registerBtn.style.color = '#7A8568';
+        });
+        loginBtn.addEventListener('mouseenter', () => {
+            loginBtn.style.backgroundColor = 'transparent';
+            loginBtn.style.color = '#7A8568';
+            loginBtn.style.borderColor = '#7A8568';
+        });
+        loginBtn.addEventListener('mouseleave', () => {
+            loginBtn.style.backgroundColor = '#7A8568';
+            loginBtn.style.color = 'white';
+            loginBtn.style.borderColor = '#7A8568';
+        });
+    }
+}
+document.addEventListener('DOMContentLoaded', initializeNavbar);
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initializeNavbar);
+} else {
+    initializeNavbar();
+}
+setTimeout(initializeNavbar, 100);
+</script>
+
+<style>
+@media (min-width: 768px) and (max-width: 1023px) {
+    #registerBtn, #loginBtn {
+        width: 110px !important;
+        height: 42px !important;
+    }
+}
+@media (min-width: 1024px) {
+    #registerBtn, #loginBtn {
+        width: 129px !important;
+        height: 48px !important;
+    }
+}
+#mobileMenu {
+    transition: all 0.3s ease-in-out;
+}
+.hover\:text-djahit-orange:hover {
+    color: #E07A5F !important;
+}
+#mobileMenuBtn {
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+#mobileMenuBtn:active {
+    transform: scale(0.95);
+}
+</style>
+
+</body>
+</html>

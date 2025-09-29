@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Djahit - Homepage</title>
+    <link rel="icon" type="image/x-icon" href="../assets/img/logo.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'cream': '#E9E4D4',
+                        'djahit-orange': '#E07A5F',
+                        'text-dark': '#393E30',
+                        'button-green': '#7A8568',
+                        'sage-green': '#8B9D6F',
+                        'text-white': '#F6F7F3'
+                    },
+                    fontFamily: {
+                    sans: ['"Plus Jakarta Sans"', 'ui-sans-serif', 'system-ui', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-cream font-sans" style="overflow-x: hidden;">
+    <div id="navbar-container"></div>
+    <section class="w-full min-h-[680px] max-h-[680px] lg:min-h-[680px] lg:max-h-[680px] md:min-h-[700px] md:max-h-[700px] sm:min-h-[500px] sm:max-h-[500px] flex items-center relative" style="background-color: #E9E4D4;" id="Home">
+        <!-- Decorative elements - hidden on mobile -->
+        <img src="../assets/img/Polygon 1.svg" alt="triangle" class="absolute top-[70px] left-[795px] hidden lg:block">
+        <img src="../assets/img/Polygon 2.svg" alt="triangle" class="absolute top-[80px] left-[730px] hidden lg:block">
+        <img src="../assets/img/Brutalist 55.svg" alt="illustration" class="absolute left-[2px] bottom-[-170px] hidden lg:block" id="mustontop">
+        <img src="../assets/img/Brutalist 35.svg" alt="illustration" class="absolute right-[2px] top-[70px] hidden lg:block" id="rightcorner">
+        <div class="absolute top-[500px] left-[600px] w-12 h-12 border-[2px] border-[#626A53] rounded-[8px] transform rotate-[6deg] hidden lg:block"></div>
+        <div class="absolute top-[550px] left-[500px] w-24 h-24 border-[2px] border-[#626A53] rounded-[16px] transform rotate-[42deg] hidden lg:block"></div>
+        
+        <div class="max-w-7xl mx-auto py-6 lg:py-12 px-4 lg:px-0">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center lg:space-x-12">
+                <div class="text-center lg:text-left lg:mr-[20px] lg:mt-[-50px] order-2 lg:order-1">
+                    <h1 class="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight" style="color: #393E30;">
+                        Selamatkan <span style="color: #A85C47;">Pakaianmu</span>,<br>
+                        Selamatkan <span style="color: #A85C47;">Bumi</span> Kita
+                    </h1>
+                    <p class="text-lg md:text-xl lg:text-2xl mt-4 lg:mt-[24px] text-gray-700 max-w-lg mx-auto lg:mx-0">
+                        Platform perbaikan pakaian berbasis komunitas yang berkelanjutan dan mudah diakses.
+                    </p>
+                    <button class="bg-djahit-orange text-white whitespace-nowrap h-[45px] w-[235px] mt-8 lg:mt-[60px] rounded-full text-lg font-semibold hover:opacity-90 transition-opacity flex items-center mx-auto lg:mx-0" onclick="window.location.href = '../views/forminput.html'">
+                        <span class="pl-6">Mulai Sekarang</span>
+                        <img src="../assets/img/arrow.svg" alt="arrow" class="pl-[27px]">
+                    </button>
+                </div>                
+                <div class="flex justify-center lg:justify-end order-1 lg:order-2">
+                    <div class="lg:fixed lg:ml-[200px] w-full lg:w-auto flex justify-center">
+                        <img src="../assets/img/hero.png" 
+                             alt="Woman in elegant clothing" 
+                             class="object-cover w-[300px] md:w-[400px] lg:w-[600px] mt-0 lg:mt-[-315px] max-h-[300px] md:max-h-[400px] lg:max-h-[638.999px] shadow-none">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w-full pt-16 md:pt-20 lg:pt-20 pb-10 relative" style="background-color: #7A8568;">
+        <img src="../assets/img/aboutus-small.svg" alt="triangle" class="absolute bottom-[25px] right-[160px] hidden lg:block">
+        <img src="../assets/img/aboutus-large.svg" alt="triangle" class="absolute bottom-[8px] right-[-35px] hidden lg:block">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[47px] items-center">
+                <div class="grid grid-cols-2 grid-rows-3 gap-3 lg:gap-[20px] items-center w-full lg:w-[621.94px]">
+                    <img src="../assets/img/tl.png" 
+                         alt="Fashion model" class="w-full h-[200px] md:h-[300px] lg:h-[400px] row-span-2 object-cover rounded-[16px]">
+                    <img src="../assets/img/tr.png" 
+                         alt="Sewing machine" class="w-full h-[96px] md:h-[144px] lg:h-48 object-cover rounded-[16px]">
+                    <img src="../assets/img/br.png" 
+                         alt="Sewing supplies" class="w-full h-[210px] md:h-[315px] lg:h-[420px] row-span-2 object-cover rounded-[16px]">
+                    <img src="../assets/img/bl.png" 
+                         alt="Fabric patterns" class="w-full h-[100px] md:h-[150px] lg:h-[201px] object-cover rounded-[16px]">
+                </div>                
+                <div class="text-white space-y-8 lg:space-y-[70px] mt-4 lg:mt-[-20px] ml-0 lg:ml-[57px] text-center lg:text-left">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold">About Us</h2>
+                    <p class="text-lg md:text-xl lg:text-2xl leading-relaxed">
+                        <span class="font-semibold">Djahit </span>adalah platform <span class="font-semibold">SaaS</span> yang menghubungkan pengguna dengan penjahit lokal untuk memperbaiki dan memodifikasi pakaian. Dengan industri fashion menghasilkan <span class="font-semibold">92 juta ton limbah tekstil per tahun</span>, Djahit hadir untuk memudahkan pemesanan online sekaligus mendukung keberlanjutan dan UMKM.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w-full min-h-[500px] lg:h-[670px] pt-12 md:pt-16 lg:pt-[92px] mb-10 bg-cream relative">
+        <img src="../assets/img/Brutalist 56.svg" alt="triangle" class="absolute top-[-30px] left-[-48px] hidden lg:block">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mt-8 lg:mt-[35px]" style="color: #A85C47;">Our Mission</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 mt-12 lg:mt-[95px]">
+                <div class="bg-[#E9E4D4] border-[1px] border-[#A85C47] p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow" id="missionCard1">
+                    <div class="w-12 h-12 lg:w-16 lg:h-16 mb-4 lg:mb-6 flex items-center justify-center mx-auto lg:mx-0">
+                        <img src="../assets/img/thrift-shop 1.png" alt="thrift-shop ilustrasi" class="w-full h-full" id="missionCard1Img">
+                    </div>
+                    <h3 class="text-xl md:text-2xl lg:text-[28px] font-bold mb-3 lg:mb-4 text-center lg:text-left" style="color: #A85C47;">Keberlanjutan di Fashion</h3>
+                    <p class="text-[#393E30] text-base md:text-lg lg:text-xl leading-relaxed text-center lg:text-left" id="missionCard1p">
+                        Industri fashion menyumbang 10% emisi karbon global. Perbaikan pakaian dapat mengurangi jejak tekstil hingga 30%.
+                    </p>
+                </div>
+                <div class="bg-[#E9E4D4] border-[1px] border-[#A85C47] p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-shadow" id="missionCard2">
+                    <div class="w-12 h-12 lg:w-16 lg:h-16 mb-4 lg:mb-6 flex items-center justify-center mx-auto lg:mx-0">
+                        <img src="../assets/img/sewing-machine 1.png" alt="sewing-machine illustration" class="w-full h-full" id="missionCard2Img">
+                    </div>
+                    <h3 class="text-xl md:text-2xl lg:text-[28px] font-bold mb-3 lg:mb-4 text-center lg:text-left" style="color: #A85C47;">Pemberdayaan Penjahit Lokal</h3>
+                    <p class="text-[#393E30] text-base md:text-lg lg:text-xl leading-relaxed text-center lg:text-left" id="missionCard2p">
+                        Platform membantu penjahit lokal mendapatkan pelangan dan mencari sumber pendapatan yang berkelanjutan.
+                    </p>
+                </div>
+                <div class="bg-[#E9E4D4] p-6 lg:p-8 border-[1px] border-[#A85C47] rounded-2xl shadow-lg hover:shadow-xl transition-shadow md:col-span-2 lg:col-span-1" id="missionCard3">
+                    <div class="w-12 h-12 lg:w-16 lg:h-16 mb-4 lg:mb-6 flex items-center justify-center mx-auto lg:mx-0">
+                        <img src="../assets/img/garbage-bag 1.png" alt="garbage-bag illustration" class="w-full h-full" id="missionCard3Img">
+                    </div>
+                    <h3 class="text-xl md:text-2xl lg:text-[28px] font-bold mb-3 lg:mb-4 text-center lg:text-left" style="color: #A85C47;">Mengurangi sampah tekstil</h3>
+                    <p class="text-[#393E30] text-base md:text-lg lg:text-xl leading-relaxed text-center lg:text-left" id="missionCard3p">
+                        Perbaikan pakaian mengurangi jumlah ton limbah tekstil yang berujung di TPA setiap tahunnya.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w-full mt-8 lg:mt-16 py-12 lg:py-20 relative">
+        <div class="absolute right-0 top-0 bottom-0 w-[95%] rounded-l-[60px] lg:rounded-l-[120px]" style="background-color: #7A8568;"></div>        
+        <div class="relative w-[90%] px-4 lg:px-6 mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+                <div class="text-white text-center lg:text-left">
+                    <h2 class="text-3xl md:text-4xl lg:text-5xl pl-0 lg:pl-12 font-bold leading-tight mb-4">SDGS<br>Alignment</h2>
+                </div>                
+                <div class="grid grid-cols-3 w-full gap-4 lg:gap-0">
+                    <div class="text-center">
+                        <div class="mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px]">
+                            <img src="../assets/img/sdg12.png" alt="sdg 12 logo" class="w-[50px] md:w-[60px] lg:w-auto">
+                        </div>
+                        <p class="text-white font-semibold text-xs lg:text-sm">SDG 12:</p>
+                        <p class="text-white text-xs lg:text-sm opacity-90">Responsible Consumption</p>
+                    </div>                    
+                    <div class="text-center border-x-[1px] border-[#F6F7F3]">
+                        <div class="w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px] mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                            <img src="../assets/img/sdg13.png" alt="sdg 13 logo" class="w-[50px] md:w-[60px] lg:w-auto">
+                        </div>
+                        <p class="text-white font-semibold text-xs lg:text-sm">SDG 13:</p>
+                        <p class="text-white text-xs lg:text-sm opacity-90">Climate Action</p>
+                    </div>                    
+                    <div class="text-center">
+                        <div class="w-[70px] h-[70px] md:w-[85px] md:h-[85px] lg:w-[100px] lg:h-[100px] mx-auto mb-4 bg-white rounded-2xl flex items-center justify-center shadow-lg">
+                            <img src="../assets/img/sdg8.png" alt="sdg 8 logo" class="w-[50px] md:w-[60px] lg:w-auto">
+                        </div>
+                        <p class="text-white font-semibold text-xs lg:text-sm">SDG 8:</p>
+                        <p class="text-white text-xs lg:text-sm opacity-90">Decent Work</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="w-full py-12 lg:py-20 bg-cream relative">
+        <img src="../assets/img/flow-top.svg" alt="illustration" class="absolute left-[11px] top-[2px] hidden lg:block" id="ilustrasi1">
+        <img src="../assets/img/flow-bottom.png" alt="illustration" class="absolute right-[2px] bottom-[-70px] hidden lg:block" id="ilustrasi2">
+        <div class="max-w-7xl mx-auto px-4 lg:px-6">
+            <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12 lg:mb-16" style="color: #E07A5F;">Flow Of Usage</h2>            
+            <img src="../assets/img/flow of usage.svg" alt="flow of usage" class="mx-auto max-w-full h-auto">
+        </div>
+    </section>
+    
+    <section class="w-full py-12 lg:py-20 relative overflow-hidden" style="background-color: #7A8568;">
+        <div class="absolute top-20 left-6 w-[50px] h-[50px] lg:w-[103px] lg:h-[103px] border-2 border-[#F6F7F3] rounded-[8px] transform rotate-[58.93deg]"></div>
+        <div class="absolute top-[200px] lg:top-[356px] right-12 w-8 h-8 lg:w-12 lg:h-12 border-2 border-[#F6F7F3] rounded-[8px] transform -rotate-[20deg]"></div>
+        <div class="absolute bottom-20 right-6 w-12 h-12 lg:w-24 lg:h-24 border-2 border-[#F6F7F3] rounded-[8px] transform rotate-[12.5deg]"></div>
+        <div class="max-w-4xl mx-auto px-4 lg:px-6 relative z-10">
+            <div class="text-center mb-12 lg:mb-16">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">FAQ</h2>
+                <div class="w-24 h-1 bg-white/60 mx-auto"></div>
+            </div>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="border-b-2 border-white/40 pb-6">
+                    <div class="flex items-start justify-between cursor-pointer faq-toggle">
+                        <div class="flex items-start space-x-3 lg:space-x-4">
+                            <img src="../assets/img/question.svg" alt="question sign" class="w-[36px] h-[36px] lg:w-[52px] lg:h-[52px] flex-shrink-0">
+                            <h3 class="text-xl md:text-2xl lg:text-[28px] font-medium text-[#F6F7F3] leading-relaxed">Apa itu "Djahit"?</h3>
+                        </div>
+                        <svg class="w-5 h-5 lg:w-6 lg:h-6 transform transition-transform duration-300 text-white/80 mt-2 flex-shrink-0 faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-content pt-6 overflow-hidden transition-all duration-500 ease-in-out" style="max-height: 0;">
+                        <p class="text-[#F1F3ED] text-lg lg:text-xl leading-relaxed">Platform yang memungkinkan Anda untuk memperbaiki pakaian dengan mudah melalui jaringan penjahit terpercaya.</p>
+                    </div>
+                </div>                
+                <div class="border-b-2 border-white/40 pb-6">
+                    <div class="flex items-start justify-between cursor-pointer faq-toggle">
+                        <div class="flex items-start space-x-3 lg:space-x-4">
+                            <img src="../assets/img/question.svg" alt="question sign" class="w-[36px] h-[36px] lg:w-[52px] lg:h-[52px] flex-shrink-0">
+                            <h3 class="text-xl md:text-2xl lg:text-[28px] font-medium text-[#F6F7F3] leading-relaxed">"Bagaimana sistem pick-up & delivery?"</h3>
+                        </div>
+                        <svg class="w-5 h-5 lg:w-6 lg:h-6 transform transition-transform duration-300 text-white/80 mt-2 flex-shrink-0 faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-content pt-6 overflow-hidden transition-all duration-500 ease-in-out" style="max-height: 0;">
+                        <p class="text-[#F1F3ED] text-lg lg:text-xl leading-relaxed">Platform yang memungkinkan Anda untuk memperbaiki pakaian dengan mudah melalui jaringan penjahit terpercaya.</p>
+                    </div>
+                </div>                
+                <div class="border-b-2 border-white/40 pb-6">
+                    <div class="flex items-start justify-between cursor-pointer faq-toggle">
+                        <div class="flex items-start space-x-3 lg:space-x-4">
+                            <img src="../assets/img/question.svg" alt="question sign" class="w-[36px] h-[36px] lg:w-[52px] lg:h-[52px] flex-shrink-0">
+                            <h3 class="text-xl md:text-2xl lg:text-[28px] font-medium text-[#F6F7F3] leading-relaxed">"Apakah bisa request jahitan khusus?"</h3>
+                        </div>
+                        <svg class="w-5 h-5 lg:w-6 lg:h-6 transform transition-transform duration-300 text-white/80 mt-2 flex-shrink-0 faq-arrow" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                        </svg>
+                    </div>
+                    <div class="faq-content pt-6 overflow-hidden transition-all duration-500 ease-in-out" style="max-height: 0;">
+                        <p class="text-[#F1F3ED] text-lg lg:text-xl leading-relaxed">Bisa, anda dapat menuliskan permintaan untuk jahitan khusus pada kolom yang sudah disediakan</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="footer-container"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        $('#navbar-container').load('navbar.html');
+        $('#footer-container').load('/views/footer.html');
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        if (mobileMenuBtn && mobileMenu) {
+            mobileMenuBtn.addEventListener('click', function() {
+                mobileMenu.classList.toggle('hidden');
+            });            
+            document.addEventListener('click', function(event) {
+                if (!mobileMenuBtn.contains(event.target) && !mobileMenu.contains(event.target)) {
+                    mobileMenu.classList.add('hidden');
+                }
+            });
+        }
+        setTimeout(function() {
+            initializeButtonEffects();
+            initializeMissionCardEffects();
+        }, 100);        
+        function preventBackButton() {
+        window.history.forward();
+    }
+    
+    // Push a new history state to prevent going back
+    window.history.pushState(null, null, window.location.href);
+    
+    // Listen for back button
+    window.addEventListener('popstate', function(event) {
+        preventBackButton();
+        // Optional: Show a message or redirect
+        alert('Please use the logout button to exit.');
+    });
+    
+    // Additional security: Check if user is still authenticated periodically
+    function checkAuthStatus() {
+        fetch('/user/check-auth', {
+            method: 'GET',
+            credentials: 'include' // Important: include cookies
+        })
+        .then(response => {
+            if (response.status === 401) {
+                // User is not authenticated, redirect to login
+                window.location.replace('/views/login.html?error=session_expired');
+            }
+        })
+        .catch(() => {
+            // On error, redirect to login for safety
+            window.location.replace('/views/login.html?error=session_expired');
+        });
+    }
+    
+    // Check auth status every 5 minutes
+    setInterval(checkAuthStatus, 5 * 60 * 1000);
+    
+    // Also check on page focus (when user comes back to tab)
+    window.addEventListener('focus', checkAuthStatus);
+        const faqToggles = document.querySelectorAll('.faq-toggle');
+        faqToggles.forEach(toggle => {
+                toggle.addEventListener('click', function() {
+                    const faqContent = this.parentElement.querySelector('.faq-content');
+                    const arrow = this.querySelector('.faq-arrow');
+                    if (faqContent.style.maxHeight === '0px' || !faqContent.style.maxHeight) {
+                        faqContent.style.maxHeight = faqContent.scrollHeight + 'px';
+                        if (arrow) {
+                            arrow.style.transform = 'rotate(-90deg)';
+                        }
+                    } else {
+                        faqContent.style.maxHeight = '0px';
+                        if (arrow) {
+                            arrow.style.transform = 'rotate(0deg)';
+                        }
+                    }
+                });
+            });            
+            if (window.innerWidth >= 1024) {
+                const mustontop = document.getElementById('mustontop');
+                if (mustontop) {
+                    mustontop.style.cssText = `
+                        position: fixed !important;
+                        left: 2px !important;
+                        bottom: -170px !important;
+                        z-index: 9999 !important;
+                        pointer-events: none !important;
+                        `;
+                    let scrollTimeout;
+                    window.addEventListener('scroll', () => {
+                        clearTimeout(scrollTimeout);
+                        scrollTimeout = setTimeout(() => {
+                            mustontop.style.zIndex = '9999';
+                        }, 10);
+                    });
+                }
+            }
+    });
+    function initializeButtonEffects() {
+        const registerBtn = document.getElementById('registerBtn');
+        const loginBtn = document.getElementById('loginBtn');
+        if (registerBtn && loginBtn) {
+            registerBtn.addEventListener('mouseenter', () => {
+                registerBtn.style.backgroundColor = '#7A8568';
+                registerBtn.style.color = 'white';
+            });
+            registerBtn.addEventListener('mouseleave', () => {
+                registerBtn.style.backgroundColor = 'transparent';
+                registerBtn.style.color = '#7A8568';
+            });
+            loginBtn.addEventListener('mouseenter', () => {
+                loginBtn.style.backgroundColor = 'transparent';
+                loginBtn.style.color = '#7A8568';
+                loginBtn.style.borderColor = '#7A8568';
+            });
+            loginBtn.addEventListener('mouseleave', () => {
+                loginBtn.style.backgroundColor = '#7A8568';
+                loginBtn.style.color = 'white';
+                loginBtn.style.borderColor = '#7A8568';
+            });
+        }
+    }
+    function initializeMissionCardEffects() {
+        const missionCard1 = document.getElementById('missionCard1');
+        const missionCard1Img = document.getElementById('missionCard1Img');
+        const missionCard1p = document.getElementById('missionCard1p');
+        const missionCard2 = document.getElementById('missionCard2');
+        const missionCard2Img = document.getElementById('missionCard2Img');
+        const missionCard2p = document.getElementById('missionCard2p');
+        const missionCard3 = document.getElementById('missionCard3');
+        const missionCard3Img = document.getElementById('missionCard3Img');
+        const missionCard3p = document.getElementById('missionCard3p');        
+        if (missionCard1) {
+            missionCard1.addEventListener('mouseenter', () => {
+                missionCard1.style.backgroundColor = '#7A8568';
+                missionCard1.style.borderStyle = 'solid';
+                missionCard1.style.borderColor = '#A85C47';
+                missionCard1.style.borderWidth = '1px';
+                if (missionCard1p) missionCard1p.style.color = '#F6F7F3';
+                if (missionCard1Img) missionCard1Img.src = "../assets/img/thrift-shop 1 white.png";
+            });
+            missionCard1.addEventListener('mouseleave', () => {
+                missionCard1.style.backgroundColor = '#E9E4D4';
+                if (missionCard1p) missionCard1p.style.color = '#393E30';
+                if (missionCard1Img) missionCard1Img.src = "../assets/img/thrift-shop 1.png";
+            });
+        }        
+        if (missionCard2) {
+            missionCard2.addEventListener('mouseenter', () => {
+                missionCard2.style.backgroundColor = '#7A8568';
+                missionCard2.style.borderStyle = 'solid';
+                missionCard2.style.borderColor = '#A85C47';
+                missionCard2.style.borderWidth = '1px';
+                if (missionCard2p) missionCard2p.style.color = '#F6F7F3';
+                if (missionCard2Img) missionCard2Img.src = "../assets/img/sewing-machine white.png";
+            });
+            missionCard2.addEventListener('mouseleave', () => {
+                missionCard2.style.backgroundColor = '#E9E4D4';
+                if (missionCard2p) missionCard2p.style.color = '#393E30';
+                if (missionCard2Img) missionCard2Img.src = "../assets/img/sewing-machine 1.png";
+            });
+        }        
+        if (missionCard3) {
+            missionCard3.addEventListener('mouseenter', () => {
+                missionCard3.style.backgroundColor = '#7A8568';
+                missionCard3.style.borderStyle = 'solid';
+                missionCard3.style.borderColor = '#A85C47';
+                missionCard3.style.borderWidth = '1px';
+                if (missionCard3p) missionCard3p.style.color = '#F6F7F3';
+                if (missionCard3Img) missionCard3Img.src = "../assets/img/garbage-bag white.png";
+            });
+            missionCard3.addEventListener('mouseleave', () => {
+                missionCard3.style.backgroundColor = '#E9E4D4';
+                if (missionCard3p) missionCard3p.style.color = '#393E30';
+                if (missionCard3Img) missionCard3Img.src = "../assets/img/garbage-bag 1.png";
+            });
+        }
+    };
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('nav');
+            if (navbar && window.scrollY > 100) {
+                navbar.classList.add('shadow-lg');
+            } else if (navbar) {
+                navbar.classList.remove('shadow-lg');
+            }
+        });
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                }
+            });
+        }, observerOptions);
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .animate-fade-in {
+                animation: fadeIn 0.8s ease-out forwards;
+            }
+            
+            .faq-content {
+                transition: all 0.9s ease-in-out;
+            }
+            
+            .hover\\:scale-105:hover {
+                transform: scale(1.05);
+            }
+            
+            .transition-transform {
+                transition: transform 0.3s ease-in-out;
+            }
+
+            /* Force mustontop to stay on top - only on desktop */
+            @media (min-width: 1024px) {
+                #mustontop {
+                    position: fixed !important;
+                    z-index: 9999 !important;
+                    pointer-events: none !important;
+                }
+            }
+            
+            /* Mobile optimizations */
+            @media (max-width: 768px) {
+                .faq-toggle h3 {
+                    font-size: 18px !important;
+                    line-height: 1.4 !important;
+                }
+                
+                .grid-cols-2.grid-rows-3 {
+                    gap: 12px !important;
+                }
+                
+                /* Ensure mission cards stack properly on mobile */
+                @media (max-width: 640px) {
+                    .md\\:col-span-2 {
+                        grid-column: span 1 !important;
+                    }
+                }
+            }
+            
+            /* Tablet optimizations */
+            @media (min-width: 768px) and (max-width: 1023px) {
+                .hero-image {
+                    max-width: 450px;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+</script>
+</body>
+</html>
