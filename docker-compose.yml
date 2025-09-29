@@ -47,7 +47,9 @@ services:
     networks:
       - djahit-network
     volumes:
-      - ./models/best.pt:/app/runs/detect/train_pretty_save5/weights/best.pt
+     volumes:
+      - ~/models:/app/runs/detect/train_pretty_save5/weights
+
     environment:
       - PYTHONUNBUFFERED=1
       - YOLO_CONFIG_DIR=/app/config
