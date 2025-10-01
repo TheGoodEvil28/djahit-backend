@@ -30,60 +30,20 @@ app.use(helmet({
 
 app.use(compression());
 app.use(cors({
-  origin: '*',                 // allow all origins
+  origin: '*',           
   methods: ['GET','POST','PUT','DELETE','OPTIONS'],
   allowedHeaders: ['Content-Type','Authorization','X-Requested-With'],
-  credentials: true,           // allow cookies/auth headers if needed
+  credentials: true,     
   preflightContinue: false,
   optionsSuccessStatus: 204
 }));
-if (process.env.NODE_ENV === 'production') {
-  app.use(morgan('combined')); // Standard Apache log format
-} else {
-  app.use(morgan('dev')); // Colorful dev format
-}
-// Trust proxy settings
+  app.use(morgan('combined'));
 app.set('trust proxy', ['loopback', 'linklocal', 'uniquelocal']);
 
-// Handle preflight requests
-// app.options('*', cors());
 
-// Your existing middleware
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
-if (process.env.NODE_ENV === 'production') {
-  // Force HTTPS
-  app.use((req, res, next) => {
-    if (req.header('x-forwarded-proto') !== 'https') {
-      return res.redirect(`https://${req.header('host')}${req.url}`);
-    }
-    next();
-  });
 
-  // Additional security headers
-  app.use((req, res, next) => {
-    res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('X-Frame-Options', 'DENY');
-    res.setHeader('X-XSS-Protection', '1; mode=block');
-    res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
-    next();
-  });
-
-  // Stricter rate limiting for production
-  const productionLimiter = rateLimit({
-    windowMs: 15 * 60 * 1000,
-    max: 50, // Reduced from 100
-    message: {
-      success: false,
-      error: {
-        code: 'RATE_LIMIT_EXCEEDED',
-        message: 'Too many requests. Please try again later.'
-      }
-    }
-  });
-  app.use('/api/', productionLimiter);
-}
 const JWT_SECRET = process.env.JWT_SECRET;
 
 if (!JWT_SECRET) {
@@ -171,8 +131,8 @@ const generateTokens = (user) => {
 const validateRepairRequestCreate = [
   body('original_img_url')
     .isURL({ require_protocol: true, protocols: ['http', 'https'] })
-    .isLength({ max: 500 })
-    .withMessage('Valid image URL is required (max 500 characters)'),
+    .isLength({ max: 3000 })
+    .withMessage('Valid image URL is required (max 3000 characters)'),
   body('img_filename')
     .optional()
     .isLength({ max: 255 })
@@ -261,7 +221,6 @@ const validateId = [
   param('id').isInt({ min: 1 }).withMessage('Invalid ID')
 ];
 
-// Check validation results
 const checkValidation = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -338,7 +297,6 @@ app.post('/api/auth/register', async (req, res) => {
       });
     }
 
-    // Email format validation
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return res.status(400).json({
@@ -350,7 +308,6 @@ app.post('/api/auth/register', async (req, res) => {
       });
     }
 
-    // Check if user already exists
     const existingUser = await pool.query(
       'SELECT id FROM users WHERE email = $1',
       [email]
@@ -366,10 +323,8 @@ app.post('/api/auth/register', async (req, res) => {
       });
     }
 
-    // Hash password
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    // Create user
     const result = await pool.query(
       `INSERT INTO users (firstname, lastname, email, password, phone, created_at)
        VALUES ($1, $2, $3, $4, $5, NOW())
@@ -422,7 +377,6 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Find user
     const result = await pool.query(
       'SELECT id, firstname, lastname, email, password, phone FROM users WHERE email = $1',
       [email]
@@ -440,7 +394,6 @@ app.post('/api/auth/login', async (req, res) => {
 
     const user = result.rows[0];
 
-    // Verify password
     const validPassword = await bcrypt.compare(password, user.password);
     if (!validPassword) {
       return res.status(401).json({
@@ -452,7 +405,6 @@ app.post('/api/auth/login', async (req, res) => {
       });
     }
 
-    // Generate JWT token
     const tokens = generateTokens(user);
 
 
@@ -487,8 +439,6 @@ app.post('/api/auth/login', async (req, res) => {
 
 // POST /api/auth/logout - Logout user (stateless, just for client-side cleanup)
 app.post('/api/auth/logout', authenticateToken, (req, res) => {
-  // In a stateless JWT system, logout is handled client-side
-  // But we can provide this endpoint for consistency
   res.json({
     success: true,
     message: 'Logout successful. Please remove the token from client storage.'
@@ -550,7 +500,6 @@ app.put('/api/users/me', authenticateToken, async (req, res) => {
     const { firstname, lastname, phone } = req.body;
     const userId = req.user.id;
 
-    // Build dynamic query
     const updates = [];
     const values = [];
     let paramCount = 1;
@@ -658,7 +607,6 @@ app.delete('/api/users/me', authenticateToken, async (req, res) => {
 // GET /api/users - Get all users (admin only)
 app.get('/api/users', authenticateToken, async (req, res) => {
   try {
-    // Add admin check here if needed
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.query.limit) || 10;
     const offset = (page - 1) * limit;
@@ -716,7 +664,6 @@ app.get('/api/repair-requests',
       const status = req.query.status;
       const userId = req.user.id;
 
-      // Build query with proper parameterization
       let baseQuery = `
         SELECT 
           id, user_id, original_img_url, img_filename, file_size, mime_type,
@@ -739,7 +686,6 @@ app.get('/api/repair-requests',
       baseQuery += ' ORDER BY created_at DESC LIMIT $' + (queryParams.length + 1) + ' OFFSET $' + (queryParams.length + 2);
       queryParams.push(limit, offset);
 
-      // Execute queries with transaction for consistency
       const client = await pool.connect();
       try {
         await client.query('BEGIN');
@@ -1040,7 +986,6 @@ app.delete('/api/repair-requests/:id',
       const id = parseInt(req.params.id);
       const userId = req.user.id;
 
-      // Check if request can be cancelled (only pending requests)
       const result = await pool.query(
         'SELECT status FROM repair_requests WHERE id = $1 AND user_id = $2',
         [id, userId]
